@@ -1,0 +1,41 @@
+{
+  "id": "jiejiao",
+  "title": "街角",
+  "pageCount": 10,
+  "leaf": [768, 1024],
+  "size": "1536x1024",
+  "brief": "Book concept: 'Street Corner' (街角): the background is bigger than the person. Book constants: the main operation is surface extension — the wall or ground in each photograph (plaster, whitewashed brick, concrete, turf stripes) is extended into a flat page ground with the same color and texture; on one side the photo edge merges into the extended surface, on the other side it stays a hard straight cut, so both edge types coexist. Accent: one small solid red square (#b3262d) taken from the red polka-dot bow, used as a mark only where specified. Grounds come from each spread's own wall, so they shift between plaster beige, white, grey and turf green, always low-saturation flat planes. No graffiti, stickers, street signs, tape, torn paper or vintage filters. Typography for the whole book: one Chinese sans-serif with clear weights (like Source Han Sans) in near-black (#1d1d1b); title bold, large, tight tracking; short lines regular weight, small, single line; folios small. Faces: reproduce the person's face, hair and clothing exactly from the reference photographs as photographic content; never redraw, restyle, beautify or replace the face.",
+  "arc": "Whole-book arc (cover + 4 spreads): cover grey wall and red mark -> spread 1 a beige wall extended into a quiet page -> spread 2 white wall beside grey wall -> spread 3 turf stripes fill both pages and the person becomes tiny -> spread 4 the person faces a wall of paintings, closing.",
+  "spreads": [
+    {
+      "id": "cover",
+      "kind": "cover",
+      "sources": ["photo17.jpg", "photo2.jpg"],
+      "prompt": "This is the OUTSIDE COVER artwork: the LEFT half is the BACK cover, the RIGHT half is the FRONT cover. References: image 1 = photo17 (person with a red polka-dot bow in front of a grey concrete wall, an overpass and scooters behind), image 2 = photo2 (source of the beige plaster wall surface). FRONT (right half): the grey concrete wall of image 1 extended upward to fill the front as a flat textured plane; image 1 sits in the lower part, its top edge merging into the extended wall, its bottom edge a hard cut at the page bottom. One small solid red square at the same height as the bow, in the open wall area. Title 「街角」 bold, large, near-black sans, near the top of the front. BACK (left half): flat beige plaster surface from image 2, empty except one small red square near the lower right. No other text. Intervention: mixed. Keep the face fully photographic and away from the center fold."
+    },
+    {
+      "id": "s01",
+      "kind": "spread",
+      "sources": ["photo2.jpg"],
+      "prompt": "Spread 1 of 4, the quiet opening after the cover; it sets up the two-wall comparison of spread 2. Reference: image 1 = photo2 (person in a white shirt leaning against a beige plaster wall, a door frame at right). LEFT page: only the beige plaster wall of image 1, extended as a flat, softly textured plane; empty. RIGHT page: image 1 placed so its left edge merges seamlessly into the extended wall of the left page, while its right edge is a hard straight cut at the page edge. The person stays on the right page, well clear of the center fold. No text, no red square. Intervention: light. Low intensity, quiet."
+    },
+    {
+      "id": "s02",
+      "kind": "spread",
+      "sources": ["photo15.jpg", "photo17.jpg"],
+      "prompt": "Spread 2 of 4, the representative middle passage: a comparison of two walls after the single wall of spread 1; it prepares the extreme scale shift of spread 3. References: image 1 = photo15 (person in a dark jacket on a wooden bench before a whitewashed brick wall), image 2 = photo17 (person with a red polka-dot bow before a grey concrete wall). LEFT page: image 1 in the lower part; its whitewashed brick wall extended upward to fill the upper half of the page; bottom edge a hard cut. RIGHT page: image 2 in the lower part; its grey concrete wall extended upward to fill the upper half; bottom edge a hard cut. The bottom edges of both photographs align on one horizontal line across the spread. On the left page's white wall, one small solid red square echoing the bow on the right. Small regular-weight sans text in one line on the left page's wall area: 「白墙，灰墙。」. Intervention: mixed. Medium intensity."
+    },
+    {
+      "id": "s03",
+      "kind": "spread",
+      "sources": ["photo13.jpg", "photo9.jpg", "photo10.jpg"],
+      "prompt": "Spread 3 of 4, the peak: after two wall spreads, the ground takes over and the person becomes tiny; the next spread closes with a wall of paintings. References: image 1 = photo13 (person in a long white dress standing on a striped football turf field), image 2 = photo9 (person in printed pajamas crouching on a street step), image 3 = photo10 (street selfie with trees). Both pages: the turf's alternating light and dark green stripes of image 1 extended into large flat graphic stripes filling the entire spread edge to edge. Image 1 sits as a small hard-edged frame right of center on the right page, so the person is very small. On the left page, image 2 and image 3 as two even smaller hard-edged frames placed on the stripes at different heights. No text, no red square. Intervention: strong. High intensity."
+    },
+    {
+      "id": "s04",
+      "kind": "spread",
+      "sources": ["photo18.jpg"],
+      "prompt": "Spread 4 of 4, the closing: after the vast turf, the person now faces a wall; it leads to the beige back cover. Reference: image 1 = photo18 (person seen from behind looking at a wall densely hung with colorful paintings, herringbone wooden floor). LEFT page: the wall of paintings from image 1 enlarged and cropped so the paintings fill the whole page as a dense colorful pattern, hard edges. RIGHT page: plain wall-colored ground; image 1 complete as a hard-edged rectangle in the upper two thirds, person seen from behind. Below it, two small lines of near-black sans text: first line regular 「这一次，面向墙。」, second line smaller 「街角 · 七张照片」. Intervention: mixed. Medium-low intensity."
+    }
+  ]
+}

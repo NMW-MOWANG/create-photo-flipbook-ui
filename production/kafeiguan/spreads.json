@@ -1,0 +1,41 @@
+{
+  "id": "kafeiguan",
+  "title": "咖啡馆",
+  "pageCount": 10,
+  "leaf": [768, 1024],
+  "size": "1536x1024",
+  "brief": "Book concept: 'Café' (咖啡馆), about arm's length: phone, cup and table are all within reach. The book moves between arm's-length close-ups (selfies) and whole-room views. Book constants: the main operation is a single-weight coffee-brown contour line (#5a3a28, even pen line) traced from cups, straws and cup rims in the photographs; the line leaves the photo edge and continues across the page to connect a close-up with a distant view. Lines trace objects only, never faces or bodies. Secondary operation: circular crops echoing a cup rim, used for small details. Page grounds: milk-tea beige (#d9c6a8) by day, dark espresso brown (#3a2418) for spread 3. Close-ups are large, hard-edged, tightly cropped rectangles; distant views are small inside open ground. No coffee beans, latte art, cup icons, receipts, menus, tape, torn paper or vintage effects. Typography for the whole book: one light Chinese sans-serif (like Source Han Sans Light), dark espresso on beige, cream (#efe4d0) on dark brown; title horizontal, medium size, widely tracked; short lines horizontal, small, single line. Faces: reproduce the person's face, hair and clothing exactly from the reference photographs as photographic content; never redraw, restyle, beautify or replace the face.",
+  "arc": "Whole-book arc (cover + 4 spreads): cover close-up at arm's length -> spread 1 a line joins a close-up cup to a distant room -> spread 2 a dense row of selfie frames, no lines -> spread 3 night, dark ground, the largest images -> spread 4 only one cup-rim circle remains, closing.",
+  "spreads": [
+    {
+      "id": "cover",
+      "kind": "cover",
+      "sources": ["photo3.jpg", "photo14.jpg"],
+      "prompt": "This is the OUTSIDE COVER artwork: the LEFT half is the BACK cover, the RIGHT half is the FRONT cover. References: image 1 = photo3 (selfie, person biting a straw, holding a milk tea cup), image 2 = photo14 (tall milkshake glass with a straw on a café table at night). FRONT (right half): photo3 tightly cropped to face, straw and cup as a hard-edged rectangle filling the lower two thirds of the front; the straw and the cup outline continue beyond the photo edge as a coffee-brown contour line onto the beige ground. Title 「咖啡馆」 horizontal, medium size, light sans, near the top of the front. BACK (left half): beige ground, one small circular crop of image 2 seen around the glass rim and straw, placed low and off-center. No other text. Intervention: mixed. Keep the face fully photographic and away from the center fold."
+    },
+    {
+      "id": "s01",
+      "kind": "spread",
+      "sources": ["photo3.jpg", "photo5.jpg"],
+      "prompt": "Spread 1 of 4, the opening; follows the close-up cover and sets up the dense row of frames in spread 2. References: image 1 = photo3 (hand holding a milk tea cup with a straw), image 2 = photo5 (person sitting far away on a black leather sofa in a cluttered café corner). Ground: milk-tea beige. LEFT page: a large tight crop of image 1 around the hand, cup and straw, hard rectangular edges, bleeding off the left edge. From the straw, one continuous coffee-brown contour line leaves the photo, crosses the center fold, and ends at the right page. RIGHT page: image 2 small, about one third of the page width, as an intact rectangle where the line ends; below it, small light sans text in one line: 「吸管、杯子、手机，都在一臂之内。」. Intervention: mixed. Medium intensity."
+    },
+    {
+      "id": "s02",
+      "kind": "spread",
+      "sources": ["photo4.jpg", "photo11.jpg"],
+      "prompt": "Spread 2 of 4, the representative middle passage: a dense rhythm after the single connecting line of spread 1, before the dark night spread 3. References: image 1 = photo4 (selfie on a sofa, hand on top of head, grey hoodie), image 2 = photo11 (selfie in a car, finger at the chin, fuzzy patterned cardigan). Ground: milk-tea beige. Across both pages, one horizontal row of four image units aligned on a shared baseline with equal gaps, like burst frames: (1) image 1 as a tall rectangle, (2) a circular crop of the hand on the head from image 1, (3) image 2 as a tall rectangle, (4) a circular crop of the finger and cardigan pattern from image 2. Two units per page, none crossing the center fold. Generous margins above and below. No contour lines on this spread, no text. Intervention: light to mixed (circular detail crops only). Medium intensity, dense rhythm."
+    },
+    {
+      "id": "s03",
+      "kind": "spread",
+      "sources": ["photo14.jpg", "photo16.jpg"],
+      "prompt": "Spread 3 of 4, the peak: the only dark spread, after the beige daytime spreads; it is followed by a nearly empty closing spread. References: image 1 = photo14 (person at a café table at night with a tall milkshake glass, warm lights in the window), image 2 = photo16 (person standing in a warm wooden bar with high stools, arms open). Ground: dark espresso brown (#3a2418) across both pages. LEFT page: image 1 large; the milkshake glass is traced in a cream contour line that is enlarged to about half the page height and stands beside the photo, overlapping its edge. RIGHT page: image 2 nearly full page, hard edges, its warm lamps left photographic. Small cream light sans text in one line at the bottom of the left page: 「天黑以后，灯是暖的。」. Intervention: strong. High intensity."
+    },
+    {
+      "id": "s04",
+      "kind": "spread",
+      "sources": ["photo14.jpg"],
+      "prompt": "Spread 4 of 4, the closing rest after the dark peak; it leads to the back cover, which shows a circular crop of the glass rim. Reference: image 1 = photo14, used only for the shape of the glass rim. Ground: milk-tea beige across both pages. LEFT page: one small coffee-brown contour circle, the traced glass rim, slightly above center; no photograph. RIGHT page: nearly empty beige; near the bottom edge, small light sans text in one line: 「咖啡馆 · 六张照片」. Intervention: light. Lowest intensity; no photographs, no other lines or shapes."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "lvyin",
+  "title": "绿荫",
+  "pageCount": 10,
+  "leaf": [768, 1024],
+  "size": "1536x1024",
+  "brief": "Book concept: 'Green Shade' (绿荫). The person appears only where light leaks through leaf shadows. Book constants: the main operation is a leaf-shadow mask — flat, opaque deep pine-green ink (#1f2e24) shaped as crisp leaf-shadow silhouettes taken from the wall shadows in the red-wall photo; where the mask opens, the original photograph shows through unchanged. Mask edges are sharp cut silhouettes, never blurred or glowing. Secondary operation (spread 3 only): one thin hand-drawn ink line. The yellow hair flower is the only warm accent in the book. Page grounds: deep pine green by default, dark brick red (#6b2a1f) for spread 1, jade green (#2f8f83) for spread 3. No torn paper, tape, vintage paper, bokeh, light leaks, or dreamy filters. Typography for the whole book: one Chinese Song/Ming-style serif typeface in pale cream (#e9e4d4); title set vertically, large, generously tracked; short lines set horizontally, small, regular weight, single line; folios small. Faces: reproduce the person's face, hair and clothing exactly from the reference photographs as photographic content; never redraw, restyle, beautify or replace the face.",
+  "brief_short": "一张平面扫描效果的双页摄影杂志跨页设计稿，比例3:2，左右两页，中缝在正中。不要书本透视、页面卷曲、装订阴影或桌面背景。人物的脸、发型和衣服必须与参考照片完全一致，作为照片原样保留，不重画、不美化、不换脸。全书手法：墨绿色（#1f2e24）平涂的叶影剪影遮罩，边缘清晰锐利，不模糊不发光；遮罩开口处露出原照片。不要撕纸、胶带、做旧、光斑滤镜。中文用米白色宋体，只写引号里的字，不加其它文字、字母或水印。",
+  "arc": "Whole-book arc (cover + 4 spreads): enter from shade (heavily masked cover) -> spread 1 a plain photographic rest on red -> spread 2 mask and photos interlock -> spread 3 the mask withdraws and color opens (jade water, yellow flower) -> spread 4 back to shade, nearly empty, closing.",
+  "spreads": [
+    {
+      "id": "cover",
+      "kind": "cover",
+      "sources": ["photo7.jpg", "photo12.jpg", "photo6.jpg"],
+      "prompt": "This is the OUTSIDE COVER artwork: the LEFT half is the BACK cover, the RIGHT half is the FRONT cover. References: image 1 = photo7 (person among dark pines, white-painted tree trunk at left), image 2 = photo12 (source of the yellow hair flower), image 3 = photo6 (source of the leaf-shadow shapes on the wall). FRONT (right half): photo7 cropped close to upper body, about 70% of the front covered by the flat pine-green leaf-shadow mask; irregular leaf-shaped openings reveal the face and the bright white tree trunk as untouched photograph. Title 「绿荫」 set vertically in large cream Song serif near the right edge, clear of the face. BACK (left half): an almost solid pine-green field with one small leaf-shaped opening low in the page revealing only the yellow flower from image 2. No other text. Intervention: mixed. Keep the face fully photographic and well away from the center fold."
+    },
+    {
+      "id": "s01",
+      "kind": "spread",
+      "sources": ["photo6.jpg"],
+      "prompt": "Spread 1 of 4, the opening rest after the heavily masked cover; it sets up spread 2 where the mask returns. Reference: image 1 = photo6 (person standing in a sunlit patch in front of a long dark-red wall covered with tree shadows). LEFT page: photo6 as one intact photograph with clean straight edges, placed with a generous margin, occupying about 75% of the page height. RIGHT page: plain flat dark brick-red ground (#6b2a1f) matching the wall, mostly empty; in the lower third, one small single line of cream Song serif text: 「影子比人先到。」. Intervention: light — no added mask, no marks, no pattern. The photograph itself carries the shadows. Quiet, low intensity."
+    },
+    {
+      "id": "s02",
+      "kind": "spread",
+      "sources": ["photo7.jpg", "photo1.jpg", "photo6.jpg"],
+      "prompt": "Spread 2 of 4, the representative middle passage; follows the quiet red spread 1 and prepares the color opening of spread 3. References: image 1 = photo7 (person among dark pines), image 2 = photo1 (person by a wooden railing with bright backlit green leaves), image 3 = photo6 (leaf-shadow shapes). Ground: deep pine green. LEFT page: photo7 cropped as a tall vertical rectangle; on its right side the dark pine shadows leave the photo edge and continue as flat pine-green leaf-shadow mask shapes that cross the center fold into the right page. RIGHT page: pine-green field with one large irregular leaf-shaped opening, like a gap in foliage, through which image 2's person and bright green leaves appear as untouched photograph. Under the opening, small cream Song serif single line: 「站在亮的地方。」. Intervention: mixed — photographs stay recognizable, the mask both extends one photo and frames the other. Medium intensity; no yellow, no drawn line.",
+      "prompt_short": "这是全书第2跨（中段）。整个跨页底色为墨绿色。参考图1：松林里的人物；参考图2：木栏杆旁、逆光嫩绿树叶前的人物；参考图3：红墙上的树影，只取叶影形状。左页：图1裁成一张竖长方形照片，直角边；照片右侧松林的暗部越出照片边缘，变成墨绿叶影剪影，一直延伸过中缝进入右页。右页：墨绿底上有一个不规则的大叶形开口，像树叶间的缝隙，开口里露出图2的人物和明亮绿叶，保持照片原样。开口下方一行小号米白宋体：「站在亮的地方。」。人脸远离中缝。不要黄色、不要画线、不要其它文字。"
+    },
+    {
+      "id": "s03",
+      "kind": "spread",
+      "sources": ["photo8.jpg", "photo12.jpg"],
+      "prompt": "Spread 3 of 4, the peak: after two spreads of shade, the leaf mask disappears completely and color opens; next comes the quiet closing spread. References: image 1 = photo8 (person in black qipao by a jade-green pool with a golden-roofed pavilion, yellow flower in hair), image 2 = photo12 (same qipao, holding a long sword horizontally among willows and large leaves). LEFT page: a full-page flat jade-green color field (#2f8f83) sampled from the pool water; photo8 sits inside it as a hard-edged rectangle, offset toward the top. RIGHT page: photo12 large, nearly full page; the horizontal line of the sword continues beyond the photo as one thin black hand-drawn ink line that runs across the center fold and ends inside the left page's jade field. The yellow flowers stay photographic and are the only warm color. No leaf-shadow mask anywhere on this spread. No text. Intervention: strong. High intensity."
+    },
+    {
+      "id": "s04",
+      "kind": "spread",
+      "sources": ["photo6.jpg"],
+      "prompt": "Spread 4 of 4, the closing rest after the colorful peak; it returns to the shade of the cover and leads to the back cover. Reference: image 1 = photo6 (use only a small detail of leaf shadows on the red wall, no person). Ground: deep pine green across both pages. LEFT page: one small rectangular crop of the leaf shadow on the red wall, about 20% of the page width, placed slightly above center; everything else is plain pine-green. RIGHT page: plain pine-green, nearly empty; near the bottom edge, small cream Song serif text in one line: 「绿荫 · 五张照片」. Intervention: light. Lowest intensity in the book; no mask shapes, no lines, no yellow."
+    }
+  ]
+}

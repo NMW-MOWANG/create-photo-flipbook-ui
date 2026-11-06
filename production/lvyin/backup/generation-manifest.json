@@ -1,0 +1,52 @@
+{
+  "cover": {
+    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "sources": [
+      "photo7.jpg",
+      "photo12.jpg",
+      "photo6.jpg"
+    ],
+    "master": "assets/spreads/cover.png",
+    "left": "assets/pages/cover-left.png",
+    "right": "assets/pages/cover-right.png"
+  },
+  "s01": {
+    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "sources": [
+      "photo6.jpg"
+    ],
+    "master": "assets/spreads/s01.png",
+    "left": "assets/pages/s01-left.png",
+    "right": "assets/pages/s01-right.png"
+  },
+  "s02": {
+    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "sources": [
+      "photo7.jpg",
+      "photo1.jpg",
+      "photo6.jpg"
+    ],
+    "master": "assets/spreads/s02.png",
+    "left": "assets/pages/s02-left.png",
+    "right": "assets/pages/s02-right.png"
+  },
+  "s03": {
+    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "sources": [
+      "photo8.jpg",
+      "photo12.jpg"
+    ],
+    "master": "assets/spreads/s03.png",
+    "left": "assets/pages/s03-left.png",
+    "right": "assets/pages/s03-right.png"
+  },
+  "s04": {
+    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "sources": [
+      "photo6.jpg"
+    ],
+    "master": "assets/spreads/s04.png",
+    "left": "assets/pages/s04-left.png",
+    "right": "assets/pages/s04-right.png"
+  }
+}
