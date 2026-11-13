@@ -1,41 +1,92 @@
 {
   "id": "jiejiao",
   "title": "街角",
-  "pageCount": 10,
-  "leaf": [768, 1024],
+  "pageCount": 14,
+  "leaf": [
+    768,
+    1024
+  ],
   "size": "1536x1024",
-  "brief": "Book concept: 'Street Corner' (街角): the background is bigger than the person. Book constants: the main operation is surface extension — the wall or ground in each photograph (plaster, whitewashed brick, concrete, turf stripes) is extended into a flat page ground with the same color and texture; on one side the photo edge merges into the extended surface, on the other side it stays a hard straight cut, so both edge types coexist. Accent: one small solid red square (#b3262d) taken from the red polka-dot bow, used as a mark only where specified. Grounds come from each spread's own wall, so they shift between plaster beige, white, grey and turf green, always low-saturation flat planes. No graffiti, stickers, street signs, tape, torn paper or vintage filters. Typography for the whole book: one Chinese sans-serif with clear weights (like Source Han Sans) in near-black (#1d1d1b); title bold, large, tight tracking; short lines regular weight, small, single line; folios small. Faces: reproduce the person's face, hair and clothing exactly from the reference photographs as photographic content; never redraw, restyle, beautify or replace the face.",
-  "arc": "Whole-book arc (cover + 4 spreads): cover grey wall and red mark -> spread 1 a beige wall extended into a quiet page -> spread 2 white wall beside grey wall -> spread 3 turf stripes fill both pages and the person becomes tiny -> spread 4 the person faces a wall of paintings, closing.",
+  "brief_short": "一张3:2横幅的平面版面设计图（印刷前的电子文件，不是拍摄的实物书）：左半和右半各是摄影杂志的一页。设计图铺满画布四边，不要画出书本、纸张边缘、书脊、页面厚度、白边、中缝的折痕线或阴影，不要桌面或背景。人物面部尽量与参考照片保持一致。全书主题「街角」：背景比人大。全书手法：把照片里的墙面或地面延伸成整页的平面，照片一侧边缘融进墙面，另一侧直角硬切；一个小小的实心红方块作为记号，取自红色波点蝴蝶结。不要涂鸦、贴纸、路牌、做旧滤镜。中文用近黑色黑体，只写引号里的字，不加其它文字、字母或水印。",
   "spreads": [
     {
       "id": "cover",
       "kind": "cover",
-      "sources": ["photo17.jpg", "photo2.jpg"],
-      "prompt": "This is the OUTSIDE COVER artwork: the LEFT half is the BACK cover, the RIGHT half is the FRONT cover. References: image 1 = photo17 (person with a red polka-dot bow in front of a grey concrete wall, an overpass and scooters behind), image 2 = photo2 (source of the beige plaster wall surface). FRONT (right half): the grey concrete wall of image 1 extended upward to fill the front as a flat textured plane; image 1 sits in the lower part, its top edge merging into the extended wall, its bottom edge a hard cut at the page bottom. One small solid red square at the same height as the bow, in the open wall area. Title 「街角」 bold, large, near-black sans, near the top of the front. BACK (left half): flat beige plaster surface from image 2, empty except one small red square near the lower right. No other text. Intervention: mixed. Keep the face fully photographic and away from the center fold."
+      "sources": [
+        "photo17.jpg",
+        "photo2.jpg"
+      ],
+      "prompt_short": "这是书的外封：左半是封底，右半是封面。右半封面：参考图1灰色水泥墙延伸铺满整个封面，人物的竖幅裁切放在封面下部偏右，照片左边缘融进墙面；墙面空白处一个小红方块，与蝴蝶结同高；封面上方横排粗体大号书名「街角」。左半封底：参考图2的米黄色抹灰墙面平铺，右下角一个小红方块，不放文字。"
     },
     {
       "id": "s01",
       "kind": "spread",
-      "sources": ["photo2.jpg"],
-      "prompt": "Spread 1 of 4, the quiet opening after the cover; it sets up the two-wall comparison of spread 2. Reference: image 1 = photo2 (person in a white shirt leaning against a beige plaster wall, a door frame at right). LEFT page: only the beige plaster wall of image 1, extended as a flat, softly textured plane; empty. RIGHT page: image 1 placed so its left edge merges seamlessly into the extended wall of the left page, while its right edge is a hard straight cut at the page edge. The person stays on the right page, well clear of the center fold. No text, no red square. Intervention: light. Low intensity, quiet."
+      "sources": [
+        "photo2.jpg"
+      ],
+      "prompt_short": "第1跨，开篇，安静。左页：只有参考图1的米黄色抹灰墙面延伸出来的平面，空无一物，有柔和的墙面质感。右页：参考图1的人物（白衬衫，手叉腰，靠墙站），照片左边缘无缝融进左页的墙面，右边缘在页面边缘直角硬切。人物完整在右页，离中缝有距离。不放文字，不放红方块。"
     },
     {
       "id": "s02",
       "kind": "spread",
-      "sources": ["photo15.jpg", "photo17.jpg"],
-      "prompt": "Spread 2 of 4, the representative middle passage: a comparison of two walls after the single wall of spread 1; it prepares the extreme scale shift of spread 3. References: image 1 = photo15 (person in a dark jacket on a wooden bench before a whitewashed brick wall), image 2 = photo17 (person with a red polka-dot bow before a grey concrete wall). LEFT page: image 1 in the lower part; its whitewashed brick wall extended upward to fill the upper half of the page; bottom edge a hard cut. RIGHT page: image 2 in the lower part; its grey concrete wall extended upward to fill the upper half; bottom edge a hard cut. The bottom edges of both photographs align on one horizontal line across the spread. On the left page's white wall, one small solid red square echoing the bow on the right. Small regular-weight sans text in one line on the left page's wall area: 「白墙，灰墙。」. Intervention: mixed. Medium intensity."
+      "sources": [
+        "photo15.jpg"
+      ],
+      "prompt_short": "第2跨。参考图1的内容：刷白的砖墙前一条木长椅，深色外套的人物坐着。参考图1已按最终构图排好，严格保持人物的位置和大小，画面边缘模糊的部分按同一场景补全成清晰的照片，让整张照片连续完整。白砖墙向上延伸，占画面上部；画面左半白墙上一个小红方块，旁边一行小号黑体：「白墙。」。",
+      "landscape": true,
+      "ref_place": {
+        "photo15.jpg": [
+          0.54,
+          0.72
+        ]
+      }
     },
     {
       "id": "s03",
       "kind": "spread",
-      "sources": ["photo13.jpg", "photo9.jpg", "photo10.jpg"],
-      "prompt": "Spread 3 of 4, the peak: after two wall spreads, the ground takes over and the person becomes tiny; the next spread closes with a wall of paintings. References: image 1 = photo13 (person in a long white dress standing on a striped football turf field), image 2 = photo9 (person in printed pajamas crouching on a street step), image 3 = photo10 (street selfie with trees). Both pages: the turf's alternating light and dark green stripes of image 1 extended into large flat graphic stripes filling the entire spread edge to edge. Image 1 sits as a small hard-edged frame right of center on the right page, so the person is very small. On the left page, image 2 and image 3 as two even smaller hard-edged frames placed on the stripes at different heights. No text, no red square. Intervention: strong. High intensity."
+      "sources": [
+        "photo17.jpg"
+      ],
+      "prompt_short": "第3跨。参考图1的内容：灰色水泥墙前，人物戴红色波点蝴蝶结发饰和领结，背景有高架桥和电动车。参考图1已按最终构图排好，严格保持人物的位置和大小，画面边缘模糊的部分按同一场景补全成清晰的照片，让整张照片连续完整。灰墙在画面右半延伸成大片平面，画面右半灰墙上一行小号黑体：「灰墙。」。蝴蝶结的红是画面里唯一的强色。",
+      "landscape": true,
+      "ref_place": {
+        "photo17.jpg": [
+          0.49,
+          0.28
+        ]
+      }
     },
     {
       "id": "s04",
       "kind": "spread",
-      "sources": ["photo18.jpg"],
-      "prompt": "Spread 4 of 4, the closing: after the vast turf, the person now faces a wall; it leads to the beige back cover. Reference: image 1 = photo18 (person seen from behind looking at a wall densely hung with colorful paintings, herringbone wooden floor). LEFT page: the wall of paintings from image 1 enlarged and cropped so the paintings fill the whole page as a dense colorful pattern, hard edges. RIGHT page: plain wall-colored ground; image 1 complete as a hard-edged rectangle in the upper two thirds, person seen from behind. Below it, two small lines of near-black sans text: first line regular 「这一次，面向墙。」, second line smaller 「街角 · 七张照片」. Intervention: mixed. Medium-low intensity."
+      "sources": [
+        "photo9.jpg",
+        "photo10.jpg"
+      ],
+      "prompt_short": "第4跨，两张对照。左页：参考图1（街边台阶上穿印花连体睡衣蹲坐的人物），背后的木板墙延伸成左页的整页底色，照片下边直角硬切。右页：参考图2（街边自拍，树和老楼），老楼的浅色墙面延伸成右页的整页底色，照片下边直角硬切。两张照片底边对齐在同一条水平线上。不放文字。"
+    },
+    {
+      "id": "s05",
+      "kind": "spread",
+      "sources": [
+        "photo13.jpg"
+      ],
+      "prompt_short": "第5跨，高潮。参考图1的内容：一大片深浅条纹的绿色草皮足球场，穿白色长裙的人物站在中间，显得很小。参考图1已按最终构图排好，严格保持人物的位置和大小，画面边缘模糊的部分按同一场景补全成清晰的照片，让整张照片连续完整。草皮的深浅条纹向下延伸、变得更整齐更像平面图形，占画面大部分，人物保持很小。不放文字，不放红方块。",
+      "landscape": true,
+      "ref_place": {
+        "photo13.jpg": [
+          0.5,
+          0.72
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "kind": "spread",
+      "sources": [
+        "photo18.jpg"
+      ],
+      "prompt_short": "第6跨，收尾。参考图1：人物背对镜头，看着挂满彩色油画的墙，脚下是人字形木地板（竖幅照片，人物站立，不要横躺或旋转）。左页：把墙上的油画放大裁切，密集铺满整页，作为图案。右页：浅米色底，参考图1完整竖幅照片，直角，放在页面上方三分之二处，人物站立背对观者。照片下方两行小号近黑黑体，第一行「这一次，面向墙。」，第二行更小「街角 · 七张照片」。"
     }
   ]
 }

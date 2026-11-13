@@ -52,6 +52,28 @@ window.PHOTOBOOK = {
         "file": "s04-right.png",
         "alt": "街角，s04 右页。"
       }
+    },
+    {
+      "id": "s05",
+      "left": {
+        "file": "s05-left.png",
+        "alt": "街角，s05 左页。"
+      },
+      "right": {
+        "file": "s05-right.png",
+        "alt": "街角，s05 右页。"
+      }
+    },
+    {
+      "id": "s06",
+      "left": {
+        "file": "s06-left.png",
+        "alt": "街角，s06 左页。"
+      },
+      "right": {
+        "file": "s06-right.png",
+        "alt": "街角，s06 右页。"
+      }
     }
   ],
   "backCover": {

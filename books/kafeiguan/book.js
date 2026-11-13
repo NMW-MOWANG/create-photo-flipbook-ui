@@ -80,7 +80,7 @@
   renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.setClearColor(0x1b1916, 1);
+  renderer.setClearColor(0xf3e2da, 1);
   stage.appendChild(renderer.domElement);
   const canvas = renderer.domElement;
   canvas.tabIndex = 0;
@@ -112,8 +112,8 @@
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
 
   // warm desk lamp up and to the left, cool window fill from the right
-  scene.add(new THREE.HemisphereLight(lin("#f3eee5"), lin("#3a332c"), 0.5));
-  const key = new THREE.DirectionalLight(lin("#fff1dc"), 0.78);
+  scene.add(new THREE.HemisphereLight(lin("#fff8f0"), lin("#d9bdae"), 0.78));
+  const key = new THREE.DirectionalLight(lin("#fff4e2"), 0.95);
   key.position.set(-2.7, 5.4, 2.3);
   key.castShadow = true;
   key.shadow.mapSize.set(2048, 2048);
@@ -121,7 +121,7 @@
   key.shadow.bias = -0.0004;
   key.shadow.normalBias = 0.012;
   scene.add(key, key.target);
-  const fill = new THREE.DirectionalLight(lin("#d4dcf0"), 0.1);
+  const fill = new THREE.DirectionalLight(lin("#ffe6ea"), 0.16);
   fill.position.set(3, 3, 1);
   scene.add(fill);
 
@@ -254,7 +254,7 @@
   const feltTex = tex("assets/paper/felt.webp", false, [16, 16]);
   const desk = new THREE.Mesh(
     new THREE.PlaneGeometry(60, 60),
-    paperMaterial({ color: lin("#2c2824"), bump: feltTex, bumpScale: 0.03, paperAmt: 0.22, roughness: 1 })
+    paperMaterial({ color: lin("#efdcd0"), bump: feltTex, bumpScale: 0.02, paperAmt: 0.24, roughness: 1 })
   );
   desk.rotation.x = -PI / 2;
   desk.receiveShadow = true;
@@ -363,7 +363,7 @@
   }
 
   const clothTex = tex("assets/paper/cloth.webp", false, [3, 46]);
-  const clothMat = new THREE.MeshStandardMaterial({ color: lin("#161514"), roughness: 0.82, bumpMap: clothTex, bumpScale: 0.012, side: THREE.DoubleSide });
+  const clothMat = new THREE.MeshStandardMaterial({ color: lin("#b99e8c"), roughness: 0.82, bumpMap: clothTex, bumpScale: 0.012, side: THREE.DoubleSide });
 
   function leafGeometry() {
     const front = new THREE.PlaneGeometry(W, H, COLS, ROWS);

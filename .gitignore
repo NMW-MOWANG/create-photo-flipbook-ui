@@ -2,3 +2,9 @@ __pycache__/
 .DS_Store
 .venv/
 *.env
+production/rejected/
+production/*/layers/
+production/*/backup/
+production/*/prompts/
+books/*/assets/spreads/raw/
+assets/scene/*-source.png

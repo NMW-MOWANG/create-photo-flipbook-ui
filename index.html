@@ -1,56 +1,58 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#080909" />
-    <meta name="description" content="A bookshelf example with three empty mock books." />
-    <title>On the Shelf — Photo Books Library</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f9eeea" />
+    <meta name="description" content="三本照片书，摆在奶油色的书架上。" />
+    <title>Photo Books Library</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="collection.css" />
-    <script type="module" src="collection.js"></script>
+    <link rel="stylesheet" href="shelf.css" />
   </head>
   <body>
-    <main class="library-shell">
-      <header class="masthead">
-        <div>
-          <h1>Photo Books Library</h1>
-          <p>A personal collection</p>
-          <p class="masthead__count" id="book-count"></p>
-          <button class="order-reset" type="button" hidden>Reset order ↺</button>
-        </div>
-        <p class="masthead__aside">
-          <span lang="zh-CN">摄影，装订成册。</span>
-          On the shelf
-        </p>
-      </header>
-      <div class="shelf-stage">
-        <div class="shelf-viewport">
-          <ol class="shelf" aria-label="All photobooks"></ol>
-        </div>
-      </div>
-      <footer class="library-footer">
-        <div class="shelf-scroll-cue">
-          <span class="scroll-label"></span>
-          <span class="shelf-progress" aria-hidden="true" hidden><span></span></span>
-        </div>
-        <span class="footer-selection" aria-hidden="true">PHOTOGRAPHS, BOUND.</span>
-        <span class="footer-note">
-          <span class="desktop-note">Drag to arrange. Click to open. ↗</span>
-          <span class="mobile-note">Hold &amp; drag to arrange</span>
-        </span>
-      </footer>
-      <noscript><p class="no-script">Enable JavaScript to view the bookshelf.</p></noscript>
-    </main>
-    <p id="shelf-help" class="sr-only">
-      Drag a book to rearrange the shelf. On touch screens, hold before dragging.
-      Use Left, Right, Home, and End to browse. Hold Shift with these keys to move
-      a book. Press Enter to open it. Escape cancels a move or hides the preview.
-    </p>
-    <p id="shelf-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
-    <figure class="cover-preview" aria-hidden="true">
-      <div class="cover-preview__book"><span class="cover-preview__title"></span></div>
-      <figcaption>Empty book</figcaption>
-    </figure>
+    <div id="stage" role="img" aria-label="一个奶油色雕花书柜，上面摆着三本照片书。"></div>
+
+    <header class="masthead">
+      <svg class="crown" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+        <path d="M2 13h20M3 12l1-8 4.5 4L12 3l3.5 5L20 4l1 8" stroke-linejoin="round" />
+      </svg>
+      <h1>Photo Books Library</h1>
+      <p>摄影，装订成册。</p>
+      <p class="count" id="count"></p>
+    </header>
+
+    <div id="book-label" aria-hidden="true"></div>
+
+    <footer class="footer">
+      <span>点击一本书开始翻阅</span>
+      <a href="library.html">列表视图</a>
+    </footer>
+
+    <nav id="book-links" aria-label="书架上的书"></nav>
+
+    <div id="fallback" hidden>
+      <h2>这个浏览器暂时不能显示 3D 书架</h2>
+      <p>需要开启 WebGL。也可以使用 <a href="library.html">列表视图</a>。</p>
+    </div>
+
+    <div id="loading">
+      <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>正在整理书架</p>
+    </div>
+
+    <script src="assets/vendor/three-r128.min.js"></script>
+    <script type="module">
+      import("./shelf3d.js").catch((err) => {
+        console.error(err);
+        document.getElementById("fallback").hidden = false;
+        const loading = document.getElementById("loading");
+        if (loading) loading.hidden = true;
+      });
+      import("./books.js").then(({ books }) => {
+        const n = books.filter((b) => b.dir);
+        const pages = n.reduce((s, b) => s + (b.pageCount || 0), 0);
+        document.getElementById("count").textContent = `${n.length} 本书 · ${pages} 页`;
+      });
+    </script>
   </body>
 </html>

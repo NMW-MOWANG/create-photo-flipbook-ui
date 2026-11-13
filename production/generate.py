@@ -13,7 +13,7 @@ Env:   IMAGE_PROVIDER=volc uses Volcengine 即梦 with VOLC_AK, VOLC_SK,
 import argparse, base64, hashlib, hmac, io, json, os, shutil, ssl, sys, time, uuid
 import urllib.error, urllib.parse, urllib.request
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageFilter, ImageOps
 
 try:  # python.org builds on macOS ship without system CA certificates
     import certifi
@@ -45,13 +45,18 @@ def load_env_file():
 
 
 VOLC_PROMPT_LIMIT = 800
+LANDSCAPE_BRIEF = ("输出一张横幅照片，比例3:2，照片内容直接铺满整个画布的四条边，没有任何边框、白边、留白、"
+                   "纸张、书页、相册、胶带或装订痕迹，也不要中间的折痕、竖线或阴影。人物面部尽量与参考照片保持一致。"
+                   "如需文字，只写引号里的中文，不加其它文字、字母或水印。")
 
 
 def build_prompt(book, spread):
     if os.environ.get("IMAGE_PROVIDER") == "volc":  # 即梦 rejects prompts over 800 characters
         if "prompt_short" not in spread or "brief_short" not in book:
             raise SystemExit(f"{spread['id']}: add brief_short / prompt_short (<= {VOLC_PROMPT_LIMIT} chars) to spreads.json")
-        prompt = book["brief_short"] + "\n" + spread["prompt_short"]
+        # Landscape full-bleed spreads describe a photograph, not a book page, or the model draws a mockup.
+        brief = LANDSCAPE_BRIEF if spread.get("landscape") else book["brief_short"]
+        prompt = brief + "\n" + spread["prompt_short"]
         if len(prompt) > VOLC_PROMPT_LIMIT:
             raise SystemExit(f"{spread['id']}: short prompt is {len(prompt)} chars, limit {VOLC_PROMPT_LIMIT}")
         return prompt
@@ -59,11 +64,40 @@ def build_prompt(book, spread):
 
 
 def reference_bytes(name):
-    img = Image.open(PHOTOS / name).convert("RGB")
+    img = ImageOps.exif_transpose(Image.open(PHOTOS / name)).convert("RGB")
     img.thumbnail((1536, 1536), Image.LANCZOS)
     buf = io.BytesIO()
     img.save(buf, "JPEG", quality=92)
     return buf.getvalue()
+
+
+def placed_reference(name, subject_x, target_x, zoom=1.0, size=(1536, 1024)):
+    """The photo scaled to the spread height and shifted so its subject sits at target_x (fraction
+    of the spread width); the uncovered strip is left neutral grey for the model to extend."""
+    img = ImageOps.exif_transpose(Image.open(PHOTOS / name)).convert("RGB")
+    h = round(size[1] * zoom)  # zoom > 1 enlarges and centre-crops vertically, so no strip is left
+    w = round(img.width * h / img.height)
+    img = img.resize((w, h), Image.LANCZOS).crop((0, (h - size[1]) // 2, w, (h - size[1]) // 2 + size[1]))
+    # Fill the uncovered strip with a blurred mirror of the photo's own edge: a flat grey strip is
+    # often kept as a grey band, or leaves a visible seam where the model's extension begins.
+    x0 = round(target_x * size[0] - subject_x * w)
+    canvas = Image.new("RGB", size, (128, 128, 128))
+    if x0 > 0:
+        edge = ImageOps.mirror(img.crop((0, 0, min(x0, w), size[1]))).filter(ImageFilter.GaussianBlur(18))
+        canvas.paste(edge, (x0 - edge.width, 0))
+    if x0 + w < size[0]:
+        gap = size[0] - x0 - w
+        edge = ImageOps.mirror(img.crop((w - min(gap, w), 0, w, size[1]))).filter(ImageFilter.GaussianBlur(18))
+        canvas.paste(edge, (x0 + w, 0))
+    canvas.paste(img, (x0, 0))
+    buf = io.BytesIO()
+    canvas.save(buf, "JPEG", quality=92)
+    return buf.getvalue()
+
+
+def spread_references(spread):
+    place = spread.get("ref_place", {})
+    return [placed_reference(n, *place[n]) if n in place else reference_bytes(n) for n in spread["sources"]]
 
 
 def multipart(fields, files):
@@ -114,13 +148,13 @@ def volc_call(action, body):
     return out
 
 
-def volc_image(book, spread):
+def volc_image(book, spread, prompt=None, images=None):
     """即梦 (Seedream) via CVSync2AsyncSubmitTask / CVSync2AsyncGetResult; returns (png bytes, label)."""
     req_key = os.environ.get("VOLC_REQ_KEY", "jimeng_seedream46_cvtob")
     width, height = (int(v) for v in os.environ.get("VOLC_SIZE", "2304x1536").split("x"))
-    form = {"req_key": req_key, "prompt": build_prompt(book, spread), "width": width, "height": height,
-            "force_single": True,
-            "binary_data_base64": [base64.b64encode(reference_bytes(n)).decode() for n in spread["sources"]]}
+    images = images or spread_references(spread)
+    form = {"req_key": req_key, "prompt": prompt or build_prompt(book, spread), "width": width, "height": height,
+            "force_single": True, "binary_data_base64": [base64.b64encode(b).decode() for b in images]}
     for attempt in range(4):
         resp = volc_call("CVSync2AsyncSubmitTask", form)
         if resp.get("code") == 10000:

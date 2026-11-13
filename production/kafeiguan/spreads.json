@@ -1,41 +1,86 @@
 {
   "id": "kafeiguan",
   "title": "咖啡馆",
-  "pageCount": 10,
-  "leaf": [768, 1024],
+  "pageCount": 14,
+  "leaf": [
+    768,
+    1024
+  ],
   "size": "1536x1024",
-  "brief": "Book concept: 'Café' (咖啡馆), about arm's length: phone, cup and table are all within reach. The book moves between arm's-length close-ups (selfies) and whole-room views. Book constants: the main operation is a single-weight coffee-brown contour line (#5a3a28, even pen line) traced from cups, straws and cup rims in the photographs; the line leaves the photo edge and continues across the page to connect a close-up with a distant view. Lines trace objects only, never faces or bodies. Secondary operation: circular crops echoing a cup rim, used for small details. Page grounds: milk-tea beige (#d9c6a8) by day, dark espresso brown (#3a2418) for spread 3. Close-ups are large, hard-edged, tightly cropped rectangles; distant views are small inside open ground. No coffee beans, latte art, cup icons, receipts, menus, tape, torn paper or vintage effects. Typography for the whole book: one light Chinese sans-serif (like Source Han Sans Light), dark espresso on beige, cream (#efe4d0) on dark brown; title horizontal, medium size, widely tracked; short lines horizontal, small, single line. Faces: reproduce the person's face, hair and clothing exactly from the reference photographs as photographic content; never redraw, restyle, beautify or replace the face.",
-  "arc": "Whole-book arc (cover + 4 spreads): cover close-up at arm's length -> spread 1 a line joins a close-up cup to a distant room -> spread 2 a dense row of selfie frames, no lines -> spread 3 night, dark ground, the largest images -> spread 4 only one cup-rim circle remains, closing.",
+  "brief_short": "一张3:2横幅的平面版面设计图（印刷前的电子文件，不是拍摄的实物书）：左半和右半各是摄影杂志的一页。设计图铺满画布四边，不要画出书本、纸张边缘、书脊、页面厚度、白边、中缝的折痕线或阴影，不要桌面或背景。人物面部尽量与参考照片保持一致。全书主题「咖啡馆」：东西都在一臂之内。全书手法：从杯子、吸管描出的咖啡色单线钢笔轮廓，线条越出照片，把近景和远景连起来；杯口形状的圆形裁切。底色是奶茶米色纸，夜晚的跨页用深咖啡色。不要咖啡豆、拉花、图标、小票。中文用细的黑体，只写引号里的字，不加其它文字、字母或水印。",
   "spreads": [
     {
       "id": "cover",
       "kind": "cover",
-      "sources": ["photo3.jpg", "photo14.jpg"],
-      "prompt": "This is the OUTSIDE COVER artwork: the LEFT half is the BACK cover, the RIGHT half is the FRONT cover. References: image 1 = photo3 (selfie, person biting a straw, holding a milk tea cup), image 2 = photo14 (tall milkshake glass with a straw on a café table at night). FRONT (right half): photo3 tightly cropped to face, straw and cup as a hard-edged rectangle filling the lower two thirds of the front; the straw and the cup outline continue beyond the photo edge as a coffee-brown contour line onto the beige ground. Title 「咖啡馆」 horizontal, medium size, light sans, near the top of the front. BACK (left half): beige ground, one small circular crop of image 2 seen around the glass rim and straw, placed low and off-center. No other text. Intervention: mixed. Keep the face fully photographic and away from the center fold."
+      "sources": [
+        "photo3.jpg",
+        "photo14.jpg"
+      ],
+      "prompt_short": "这是书的外封：左半是封底，右半是封面。右半封面：参考图1的自拍紧裁成大幅直角照片，占封面下方三分之二，人物咬着吸管拿着奶茶杯；吸管和杯子的轮廓用咖啡色钢笔线描出，线越出照片延伸到上方的米色纸面；封面上方横排中号细黑体书名「咖啡馆」，字距宽松。左半封底：米色纸面，靠下偏左一个小圆形裁切，只露出参考图2奶昔杯口和吸管。封底不放文字。"
     },
     {
       "id": "s01",
       "kind": "spread",
-      "sources": ["photo3.jpg", "photo5.jpg"],
-      "prompt": "Spread 1 of 4, the opening; follows the close-up cover and sets up the dense row of frames in spread 2. References: image 1 = photo3 (hand holding a milk tea cup with a straw), image 2 = photo5 (person sitting far away on a black leather sofa in a cluttered café corner). Ground: milk-tea beige. LEFT page: a large tight crop of image 1 around the hand, cup and straw, hard rectangular edges, bleeding off the left edge. From the straw, one continuous coffee-brown contour line leaves the photo, crosses the center fold, and ends at the right page. RIGHT page: image 2 small, about one third of the page width, as an intact rectangle where the line ends; below it, small light sans text in one line: 「吸管、杯子、手机，都在一臂之内。」. Intervention: mixed. Medium intensity."
+      "sources": [
+        "photo3.jpg",
+        "photo5.jpg"
+      ],
+      "prompt_short": "第1跨，开篇。米色纸面。左页：参考图1的手、奶茶杯和吸管的大幅紧裁照片，直角，出血到左边缘，脸可以只露下半部分。从吸管引出一条连续的咖啡色钢笔曲线，穿过中缝。右页：线的终点落在一张小尺寸的参考图2照片上（远处咖啡馆角落、黑色皮沙发上的人物），约占页宽三分之一；照片下方一行小号细黑体：「吸管、杯子、手机，都在一臂之内。」。"
     },
     {
       "id": "s02",
       "kind": "spread",
-      "sources": ["photo4.jpg", "photo11.jpg"],
-      "prompt": "Spread 2 of 4, the representative middle passage: a dense rhythm after the single connecting line of spread 1, before the dark night spread 3. References: image 1 = photo4 (selfie on a sofa, hand on top of head, grey hoodie), image 2 = photo11 (selfie in a car, finger at the chin, fuzzy patterned cardigan). Ground: milk-tea beige. Across both pages, one horizontal row of four image units aligned on a shared baseline with equal gaps, like burst frames: (1) image 1 as a tall rectangle, (2) a circular crop of the hand on the head from image 1, (3) image 2 as a tall rectangle, (4) a circular crop of the finger and cardigan pattern from image 2. Two units per page, none crossing the center fold. Generous margins above and below. No contour lines on this spread, no text. Intervention: light to mixed (circular detail crops only). Medium intensity, dense rhythm."
+      "sources": [
+        "photo4.jpg"
+      ],
+      "prompt_short": "第2跨。参考图1是横幅自拍：灰色卫衣，手按在头顶，靠在黑色沙发上。参考图1已按最终构图排好，严格保持人物的位置和大小，画面边缘模糊的部分按同一场景补全成清晰的照片，让整张照片连续完整。照片保持原样，只用一条细的咖啡色钢笔线描出按在头顶的手的轮廓，略微越出手的边缘。不放文字。",
+      "landscape": true,
+      "ref_place": {
+        "photo4.jpg": [
+          0.54,
+          0.72
+        ]
+      }
     },
     {
       "id": "s03",
       "kind": "spread",
-      "sources": ["photo14.jpg", "photo16.jpg"],
-      "prompt": "Spread 3 of 4, the peak: the only dark spread, after the beige daytime spreads; it is followed by a nearly empty closing spread. References: image 1 = photo14 (person at a café table at night with a tall milkshake glass, warm lights in the window), image 2 = photo16 (person standing in a warm wooden bar with high stools, arms open). Ground: dark espresso brown (#3a2418) across both pages. LEFT page: image 1 large; the milkshake glass is traced in a cream contour line that is enlarged to about half the page height and stands beside the photo, overlapping its edge. RIGHT page: image 2 nearly full page, hard edges, its warm lamps left photographic. Small cream light sans text in one line at the bottom of the left page: 「天黑以后，灯是暖的。」. Intervention: strong. High intensity."
+      "sources": [
+        "photo11.jpg",
+        "photo4.jpg"
+      ],
+      "prompt_short": "第3跨，节奏密。米色纸面。左页：参考图1车内自拍，一张完整的竖长方形照片，直角，居中偏下。右页：两个大小相同的圆形裁切细节，上下错开排列：上面是参考图1手指抵下巴的特写，下面是参考图2手按在头顶的特写。左右两页的画面底边对齐，上下大面积留白。不加线条，不放文字。同一张照片不要重复出现。"
     },
     {
       "id": "s04",
       "kind": "spread",
-      "sources": ["photo14.jpg"],
-      "prompt": "Spread 4 of 4, the closing rest after the dark peak; it leads to the back cover, which shows a circular crop of the glass rim. Reference: image 1 = photo14, used only for the shape of the glass rim. Ground: milk-tea beige across both pages. LEFT page: one small coffee-brown contour circle, the traced glass rim, slightly above center; no photograph. RIGHT page: nearly empty beige; near the bottom edge, small light sans text in one line: 「咖啡馆 · 六张照片」. Intervention: light. Lowest intensity; no photographs, no other lines or shapes."
+      "sources": [
+        "photo14.jpg"
+      ],
+      "prompt_short": "第4跨，天黑。整个跨页是深咖啡色底。左页：参考图1的竖幅照片（夜里咖啡馆桌前，一杯插着吸管的高奶昔，窗外暖黄的灯）放大，直角，占页面大部分。右页：用奶油色钢笔线把那杯奶昔放大描成一个约半页高的线稿高脚杯，线宽均匀；右页底部一行小号奶油色细黑体：「天黑以后，灯是暖的。」。"
+    },
+    {
+      "id": "s05",
+      "kind": "spread",
+      "sources": [
+        "photo16.jpg"
+      ],
+      "prompt_short": "第5跨，高潮。参考图1的内容：暖色灯光下的木头吧台和高脚凳，人物站着张开双手。参考图1已按最终构图排好，严格保持人物的位置和大小，画面边缘模糊的部分按同一场景补全成清晰的照片，让整张照片连续完整。照片的暖光保持原样，色彩浓郁。不加线条，不放文字。",
+      "landscape": true,
+      "ref_place": {
+        "photo16.jpg": [
+          0.52,
+          0.72
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "kind": "spread",
+      "sources": [
+        "photo14.jpg"
+      ],
+      "prompt_short": "第6跨，收尾，全书最安静。两页都是米色纸面，带细腻纸纹。左页中部偏上只有一个小小的咖啡色钢笔线椭圆，是参考图1杯口的轮廓，没有照片。右页几乎全空，底部一行很小的细黑体：「咖啡馆 · 六张照片」。不放其它元素。"
     }
   ]
 }

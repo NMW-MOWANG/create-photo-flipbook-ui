@@ -1,0 +1,171 @@
+:root {
+  --cream: #f9f0ea;
+  --ink: #4a3a33;
+  --ink-soft: #8c7568;
+  --gold: #c69a5c;
+  --blush: #f0d3d8;
+  --serif: "Songti SC", "SongTi", Georgia, "Times New Roman", serif;
+  --label: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 20% 0%, #fff8f2 0%, #f9e9e6 42%, #f3dedd 70%, #efd4d6 100%);
+  color: var(--ink);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+#stage { position: fixed; inset: 0; }
+#stage canvas { display: block; width: 100%; height: 100%; touch-action: none; outline: none; }
+
+.masthead {
+  position: fixed;
+  top: max(18px, env(safe-area-inset-top, 0px));
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+  z-index: 3;
+}
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #5b463d;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+.masthead .crown {
+  display: block;
+  margin: 0 auto 2px;
+  width: 22px;
+  height: 14px;
+  color: var(--gold);
+  opacity: 0.9;
+}
+.masthead p {
+  margin: 6px 0 0;
+  font-family: var(--label);
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.masthead .count { margin-top: 4px; letter-spacing: 0.22em; }
+
+.footer {
+  position: fixed;
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-family: var(--label);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  pointer-events: none;
+  z-index: 3;
+}
+.footer a { color: inherit; pointer-events: auto; text-decoration: none; border-bottom: 1px solid rgba(140, 117, 104, 0.35); }
+.footer a:hover { color: var(--ink); }
+
+/* hover label, positioned by shelf3d.js */
+#book-label {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  padding: 7px 14px 8px;
+  border-radius: 999px;
+  background: rgba(255, 250, 246, 0.9);
+  border: 1px solid rgba(198, 154, 92, 0.45);
+  box-shadow: 0 6px 18px rgba(120, 82, 70, 0.16);
+  color: #5b463d;
+  font-family: var(--serif);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s, visibility 0.22s;
+  pointer-events: none;
+}
+#book-label.is-visible { opacity: 1; visibility: visible; }
+
+/* loading veil */
+#loading {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 14px;
+  justify-items: center;
+  background: radial-gradient(90% 70% at 50% 40%, #fffaf6 0%, #f7e6e3 70%, #f1d9da 100%);
+  z-index: 6;
+  transition: opacity 0.6s;
+}
+#loading.is-done { opacity: 0; }
+#loading p { margin: 0; font-size: 14px; letter-spacing: 0.24em; color: var(--ink-soft); }
+#loading .dots { display: flex; gap: 8px; }
+#loading .dots i {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.35;
+  animation: pulse 1.2s infinite;
+}
+#loading .dots i:nth-child(2) { animation-delay: 0.15s; }
+#loading .dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes pulse { 0%, 100% { opacity: 0.25; transform: translateY(0); } 50% { opacity: 0.9; transform: translateY(-3px); } }
+
+/* fallback when WebGL is unavailable */
+#fallback {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  justify-items: center;
+  text-align: center;
+  padding: 24px;
+  background: #f9eeea;
+  z-index: 5;
+}
+#fallback[hidden] { display: none; }
+#fallback a { color: var(--ink); }
+
+/* screen-reader / keyboard book list */
+#book-links {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+#book-links a:focus-visible {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  padding: 8px 12px;
+  background: #fff;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  z-index: 9;
+}
+
+@media (max-width: 720px) {
+  .masthead h1 { font-size: 1.4rem; }
+  .masthead p { letter-spacing: 0.22em; font-size: 10px; }
+  .footer { gap: 16px; font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #loading .dots i { animation: none; opacity: 0.6; }
+}

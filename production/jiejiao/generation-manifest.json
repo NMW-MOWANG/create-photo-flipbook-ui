@@ -1,51 +1,74 @@
 {
   "cover": {
-    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "tool": "volcengine jimeng_seedream46_cvtob",
     "sources": [
       "photo17.jpg",
       "photo2.jpg"
     ],
+    "prompt": "prompts/cover.txt",
     "master": "assets/spreads/cover.png",
     "left": "assets/pages/cover-left.png",
     "right": "assets/pages/cover-right.png"
   },
   "s01": {
-    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "tool": "volcengine jimeng_seedream46_cvtob",
     "sources": [
       "photo2.jpg"
     ],
+    "prompt": "prompts/s01.txt",
     "master": "assets/spreads/s01.png",
     "left": "assets/pages/s01-left.png",
     "right": "assets/pages/s01-right.png"
   },
   "s02": {
-    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "tool": "volcengine jimeng_seedream46_cvtob",
     "sources": [
-      "photo15.jpg",
-      "photo17.jpg"
+      "photo15.jpg"
     ],
+    "prompt": "prompts/s02.txt",
     "master": "assets/spreads/s02.png",
     "left": "assets/pages/s02-left.png",
     "right": "assets/pages/s02-right.png"
   },
   "s03": {
-    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "tool": "volcengine jimeng_seedream46_cvtob",
     "sources": [
-      "photo13.jpg",
-      "photo9.jpg",
-      "photo10.jpg"
+      "photo17.jpg"
     ],
+    "prompt": "prompts/s03.txt",
     "master": "assets/spreads/s03.png",
     "left": "assets/pages/s03-left.png",
     "right": "assets/pages/s03-right.png"
   },
   "s04": {
-    "tool": "code-composite production/compose.py (fallback, not ImageGen)",
+    "tool": "volcengine jimeng_seedream46_cvtob",
     "sources": [
-      "photo18.jpg"
+      "photo9.jpg",
+      "photo10.jpg"
     ],
+    "prompt": "prompts/s04.txt",
     "master": "assets/spreads/s04.png",
     "left": "assets/pages/s04-left.png",
     "right": "assets/pages/s04-right.png"
+  },
+  "s05": {
+    "tool": "volcengine jimeng_seedream46_cvtob",
+    "sources": [
+      "photo13.jpg"
+    ],
+    "prompt": "prompts/s05.txt",
+    "master": "assets/spreads/s05.png",
+    "left": "assets/pages/s05-left.png",
+    "right": "assets/pages/s05-right.png"
+  },
+  "s06": {
+    "tool": "volcengine jimeng_seedream46_cvtob",
+    "sources": [
+      "photo18.jpg"
+    ],
+    "prompt": "prompts/s06.txt",
+    "master": "assets/spreads/s06.png",
+    "left": "assets/pages/s06-left.png",
+    "right": "assets/pages/s06-right.png"
   }
 }

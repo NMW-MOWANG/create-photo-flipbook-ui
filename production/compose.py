@@ -58,23 +58,47 @@ def font(spec, size):
     return ImageFont.truetype(spec[0], size, index=spec[1])
 
 
+# Photographs and type also go onto LAYER (RGBA), so hybrid.py can lay the original pixels
+# back over an AI-redrawn page. TEXT_ON_CANVAS=False renders the layout reference without type.
+LAYER = None
+TEXT_ON_CANVAS = True
+
+
+def put(canvas, img, xy, mask=None):
+    canvas.paste(img, xy, mask)
+    if LAYER is not None:
+        rgba = img.convert("RGBA")
+        if mask is not None:
+            rgba.putalpha(mask)
+        LAYER.paste(rgba, xy, rgba)
+
+
+def _targets(canvas):
+    out = [canvas] if TEXT_ON_CANVAS else []
+    return out + ([LAYER] if LAYER is not None else [])
+
+
 def text(canvas, xy, s, spec, size, fill, anchor="la", tracking=0):
-    draw, f = ImageDraw.Draw(canvas), font(spec, size)
-    if not tracking:
-        draw.text(xy, s, font=f, fill=fill, anchor=anchor)
-        return
-    widths = [f.getlength(c) for c in s]
-    total = sum(widths) + tracking * (len(s) - 1)
-    x = xy[0] - (total / 2 if anchor[0] == "m" else total if anchor[0] == "r" else 0)
-    for c, cw in zip(s, widths):
-        draw.text((x, xy[1]), c, font=f, fill=fill, anchor="l" + anchor[1])
-        x += cw + tracking
+    f = font(spec, size)
+    for target in _targets(canvas):
+        draw = ImageDraw.Draw(target)
+        if not tracking:
+            draw.text(xy, s, font=f, fill=fill, anchor=anchor)
+            continue
+        widths = [f.getlength(c) for c in s]
+        total = sum(widths) + tracking * (len(s) - 1)
+        x = xy[0] - (total / 2 if anchor[0] == "m" else total if anchor[0] == "r" else 0)
+        for c, cw in zip(s, widths):
+            draw.text((x, xy[1]), c, font=f, fill=fill, anchor="l" + anchor[1])
+            x += cw + tracking
 
 
 def vtext(canvas, x, y, s, spec, size, fill, gap=1.3):
-    draw, f = ImageDraw.Draw(canvas), font(spec, size)
-    for i, c in enumerate(s):
-        draw.text((x, y + i * size * gap), c, font=f, fill=fill, anchor="mt")
+    f = font(spec, size)
+    for target in _targets(canvas):
+        draw = ImageDraw.Draw(target)
+        for i, c in enumerate(s):
+            draw.text((x, y + i * size * gap), c, font=f, fill=fill, anchor="mt")
 
 
 def leaf(cx, cy, length, width, angle, steps=18):
@@ -171,14 +195,14 @@ def lvyin_cover():
     flower, _ = crop("photo12.jpg", 240, 240, focus=(0.64, 0.28), zoom=4.5)
     m = Image.new("L", (240, 240), 0)
     leaf_cluster(m, 120, 120, 95, 105, rnd, n=12, size=(45, 85))
-    c.paste(flower, (250, 650), m)
+    put(c, flower, (250, 650), m)
     front, box = crop("photo7.jpg", LW, H, focus=(0.60, 0.42), zoom=1.55)
     fx, fy = where("photo7.jpg", box, (LW, H), (0.56, 0.42))
     m = Image.new("L", (LW, H), 0)
     leaf_cluster(m, fx, fy + 60, 230, 310, rnd, n=34, size=(80, 170))
     for _ in range(16):
         leaf_cluster(m, rnd.uniform(30, LW - 30), rnd.uniform(40, H - 40), 26, 30, rnd, n=4, size=(25, 55))
-    c.paste(front, (LW, 0), m)
+    put(c, front, (LW, 0), m)
     vtext(c, LW + 668, 110, "绿荫", FONT_SONG, 112, CREAM, gap=1.35)
     return c
 
@@ -186,7 +210,7 @@ def lvyin_cover():
 def lvyin_s01():
     c = Image.new("RGB", (W, H), BRICK)
     ph, _ = crop("photo6.jpg", 576, 768)
-    c.paste(ph, (96, 128))
+    put(c, ph, (96, 128))
     text(c, (LW + 96, 790), "影子比人先到。", FONT_SONG, 30, CREAM, tracking=5)
     return c
 
@@ -195,7 +219,7 @@ def lvyin_s02():
     c = Image.new("RGB", (W, H), PINE)
     rnd = random.Random(23)
     ph7, _ = crop("photo7.jpg", 470, 800)
-    c.paste(ph7, (90, 110))
+    put(c, ph7, (90, 110))
     shade = Image.new("L", (W, H), 0)
     draw = ImageDraw.Draw(shade)
     for _ in range(34):
@@ -207,7 +231,7 @@ def lvyin_s02():
     fx, fy = where("photo1.jpg", box, (560, 720), (0.62, 0.36))
     m = Image.new("L", (560, 720), 0)
     leaf_cluster(m, fx, fy + 70, 220, 290, rnd, n=34, size=(80, 160))
-    c.paste(ph1, (870, 100), m)
+    put(c, ph1, (870, 100), m)
     text(c, (1150, 900), "站在亮的地方。", FONT_SONG, 30, CREAM, anchor="mm", tracking=5)
     return c
 
@@ -215,10 +239,10 @@ def lvyin_s02():
 def lvyin_s03():
     c = Image.new("RGB", (W, H), JADE)
     ph8, _ = crop("photo8.jpg", 600, 338)
-    c.paste(ph8, (84, 96))
+    put(c, ph8, (84, 96))
     size, origin = (680, 900), (812, 62)
     ph12, box = crop("photo12.jpg", *size)
-    c.paste(ph12, origin)
+    put(c, ph12, origin)
     (x0, y0), (x1, y1) = (where("photo12.jpg", box, size, p) for p in ((0.18, 0.47), (0.95, 0.58)))
     slope = (y1 - y0) / (x1 - x0)
     ys = lambda x: origin[1] + y0 + slope * (x - origin[0] - x0)
@@ -230,7 +254,7 @@ def lvyin_s03():
 def lvyin_s04():
     c = Image.new("RGB", (W, H), PINE)
     detail, _ = crop("photo6.jpg", 180, 180, focus=(0.30, 0.15), zoom=6)
-    c.paste(detail, (294, 360))
+    put(c, detail, (294, 360))
     text(c, (LW + 384, 940), "绿荫 · 五张照片", FONT_SONG, 22, CREAM, anchor="ms", tracking=6)
     return c
 
@@ -257,10 +281,10 @@ def kafeiguan_cover():
     c = Image.new("RGB", (W, H), BEIGE)
     rim, _ = crop("photo14.jpg", 400, 400, focus=(0.43, 0.58), zoom=4)
     img, m = circle(rim, 220)
-    c.paste(img, (200, 650), m)
+    put(c, img, (200, 650), m)
     size, origin = (600, 640), (LW + 84, 300)
     ph, box = crop("photo3.jpg", *size, focus=(0.42, 0.50), zoom=1.15)
-    c.paste(ph, origin)
+    put(c, ph, origin)
     cup = where("photo3.jpg", box, size, (0.30, 0.62))
     start = (origin[0] + cup[0], origin[1] + cup[1])
     pen(c, bezier(start, (origin[0] - 60, start[1] - 40), (origin[0] - 40, 230), (LW + 250, 220)), BROWN, 3)
@@ -272,14 +296,14 @@ def kafeiguan_s01():
     c = Image.new("RGB", (W, H), BEIGE)
     size, origin = (660, 860), (0, 82)
     ph, box = crop("photo3.jpg", *size, focus=(0.42, 0.58), zoom=1.25)
-    c.paste(ph, origin)
+    put(c, ph, origin)
     straw = where("photo3.jpg", box, size, (0.50, 0.48))
     start = (origin[0] + straw[0], origin[1] + straw[1])
     small, sorigin = (280, 373), (LW + 180, 290)
     end = (sorigin[0], sorigin[1] + small[1] * 0.6)
     pen(c, bezier(start, (start[0] + 260, start[1] - 260), (end[0] - 220, end[1] + 120), end), BROWN, 3)
     ph5, _ = crop("photo5.jpg", *small)
-    c.paste(ph5, sorigin)
+    put(c, ph5, sorigin)
     text(c, (sorigin[0], 740), "吸管、杯子、手机，都在一臂之内。", FONT_HEI_LIGHT, 24, BROWN, tracking=3)
     return c
 
@@ -288,26 +312,26 @@ def kafeiguan_s02():
     c = Image.new("RGB", (W, H), BEIGE)
     base, d = 720, 230
     ph4, _ = crop("photo4.jpg", 300, 420)
-    c.paste(ph4, (80, base - 420))
+    put(c, ph4, (80, base - 420))
     hand, _ = crop("photo4.jpg", 400, 400, focus=(0.48, 0.12), zoom=3.2)
     img, m = circle(hand, d)
-    c.paste(img, (420, base - d), m)
+    put(c, img, (420, base - d), m)
     ph11, _ = crop("photo11.jpg", 300, 420)
-    c.paste(ph11, (LW + 60, base - 420))
+    put(c, ph11, (LW + 60, base - 420))
     finger, _ = crop("photo11.jpg", 400, 400, focus=(0.64, 0.56), zoom=3)
     img, m = circle(finger, d)
-    c.paste(img, (LW + 420, base - d), m)
+    put(c, img, (LW + 420, base - d), m)
     return c
 
 
 def kafeiguan_s03():
     c = Image.new("RGB", (W, H), ESPRESSO)
     ph14, _ = crop("photo14.jpg", 440, 620)
-    c.paste(ph14, (60, 110))
+    put(c, ph14, (60, 110))
     glass_outline(c, 560, 360, 150, 500, MILK, width=3)
     text(c, (60, 930), "天黑以后，灯是暖的。", FONT_HEI_LIGHT, 24, MILK, tracking=3)
     ph16, _ = crop("photo16.jpg", 680, 900)
-    c.paste(ph16, (LW + 44, 62))
+    put(c, ph16, (LW + 44, 62))
     return c
 
 
@@ -325,7 +349,7 @@ INK, RED, PAPER = rgb("1d1d1b"), rgb("b3262d"), rgb("e8e4dc")
 
 def merged(c, name, size, origin, side, fade, focus=None, zoom=1.0):
     ph, box = crop(name, *size, focus=focus, zoom=zoom)
-    c.paste(ph, origin, ramp(*size, side, fade))
+    put(c, ph, origin, ramp(*size, side, fade))
     return box
 
 
@@ -387,16 +411,16 @@ def jiejiao_s03():
                                ("photo9.jpg", (150, 200), (150, 220)),
                                ("photo10.jpg", (130, 173), (430, 650))):
         ph, _ = crop(name, *size)
-        c.paste(ph, origin)
+        put(c, ph, origin)
     return c
 
 
 def jiejiao_s04():
     c = Image.new("RGB", (W, H), PAPER)
     wall, _ = crop("photo18.jpg", LW, H, focus=(0.5, 0.18), zoom=2.6)
-    c.paste(wall, (0, 0))
+    put(c, wall, (0, 0))
     ph, _ = crop("photo18.jpg", 520, 693)
-    c.paste(ph, (LW + 124, 100))
+    put(c, ph, (LW + 124, 100))
     text(c, (LW + 124, 870), "这一次，面向墙。", FONT_HEI_LIGHT, 28, INK, tracking=4)
     text(c, (LW + 124, 920), "街角 · 七张照片", FONT_HEI_LIGHT, 20, INK, tracking=6)
     return c
@@ -431,6 +455,9 @@ def main():
                 continue
             if not manifest.get(sid, {}).get("tool", "code-composite").startswith("code-composite") and not args.force:
                 print(f"{book_id}/{sid}: keeping image-API master")
+                continue
+            if sid not in BOOKS[book_id]:
+                print(f"{book_id}/{sid}: no code layout for this spread, skipped")
                 continue
             img = grain(BOOKS[book_id][sid]())
             master = out_dir / "assets" / "spreads" / f"{sid}.png"

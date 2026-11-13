@@ -4,15 +4,15 @@
   /* Layout: one fixed WebGL desk scene, a thin brand line on top, a navigation dock at the bottom.
      Deliberately single-theme: a book lying on dark felt under a warm lamp. */
   :root {
-    --desk: #1b1916;
-    --ink: #ece5d8;
-    --muted: #a0978a;
-    --line: rgba(236, 229, 216, 0.16);
-    --glass: rgba(27, 25, 22, 0.62);
-    --accent: #d4442b;
+    --desk: #f3e2da;
+    --ink: #4a3529;
+    --muted: #8a6c5d;
+    --line: rgba(126, 92, 70, 0.34);
+    --glass: rgba(255, 250, 245, 0.88);
+    --accent: #b0843c;
     --font-title: Georgia, "Times New Roman", serif;
     --font-label: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-    color-scheme: dark;
+    color-scheme: light;
   }
   html, body { height: 100%; }
   body {
@@ -28,7 +28,7 @@
   .vignette {
     position: fixed; inset: 0; pointer-events: none;
     background:
-      radial-gradient(120% 90% at 42% 38%, transparent 45%, rgba(8, 7, 6, 0.55) 100%);
+      radial-gradient(120% 90% at 42% 36%, transparent 52%, rgba(210, 176, 168, 0.42) 100%);
   }
 
   .top {
