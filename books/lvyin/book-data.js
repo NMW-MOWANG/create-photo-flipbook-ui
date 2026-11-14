@@ -5,79 +5,79 @@ window.PHOTOBOOK = {
   "pageWidth": 768,
   "pageHeight": 1024,
   "frontCover": {
-    "file": "cover-right.png",
+    "file": "cover-right.webp",
     "alt": "《绿荫》封面。"
   },
   "spreads": [
     {
       "id": "s01",
       "left": {
-        "file": "s01-left.png",
+        "file": "s01-left.webp",
         "alt": "绿荫，s01 左页。"
       },
       "right": {
-        "file": "s01-right.png",
+        "file": "s01-right.webp",
         "alt": "绿荫，s01 右页。"
       }
     },
     {
       "id": "s02",
       "left": {
-        "file": "s02-left.png",
+        "file": "s02-left.webp",
         "alt": "绿荫，s02 左页。"
       },
       "right": {
-        "file": "s02-right.png",
+        "file": "s02-right.webp",
         "alt": "绿荫，s02 右页。"
       }
     },
     {
       "id": "s03",
       "left": {
-        "file": "s03-left.png",
+        "file": "s03-left.webp",
         "alt": "绿荫，s03 左页。"
       },
       "right": {
-        "file": "s03-right.png",
+        "file": "s03-right.webp",
         "alt": "绿荫，s03 右页。"
       }
     },
     {
       "id": "s04",
       "left": {
-        "file": "s04-left.png",
+        "file": "s04-left.webp",
         "alt": "绿荫，s04 左页。"
       },
       "right": {
-        "file": "s04-right.png",
+        "file": "s04-right.webp",
         "alt": "绿荫，s04 右页。"
       }
     },
     {
       "id": "s05",
       "left": {
-        "file": "s05-left.png",
+        "file": "s05-left.webp",
         "alt": "绿荫，s05 左页。"
       },
       "right": {
-        "file": "s05-right.png",
+        "file": "s05-right.webp",
         "alt": "绿荫，s05 右页。"
       }
     },
     {
       "id": "s06",
       "left": {
-        "file": "s06-left.png",
+        "file": "s06-left.webp",
         "alt": "绿荫，s06 左页。"
       },
       "right": {
-        "file": "s06-right.png",
+        "file": "s06-right.webp",
         "alt": "绿荫，s06 右页。"
       }
     }
   ],
   "backCover": {
-    "file": "cover-left.png",
+    "file": "cover-left.webp",
     "alt": "《绿荫》封底。"
   }
 };

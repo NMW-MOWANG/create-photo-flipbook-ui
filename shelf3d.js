@@ -199,7 +199,7 @@ const blossomTex = canvasTex(128, 128, (g) => {
 
 const haloTexture = radialSprite("rgba(255,246,232,0.6)", "rgba(255,226,200,0.18)", 256);
 
-// ---------- optional AI textures (assets/scene/*.png) ----------
+// ---------- optional AI textures (assets/scene/*.webp) ----------
 // Generated textures replace the drawn ones when present; anything missing keeps its canvas version.
 function aiTexture(name, apply, { keyOut = false } = {}) {
   const img = new Image();
@@ -227,7 +227,7 @@ function aiTexture(name, apply, { keyOut = false } = {}) {
     for (const m of Object.values(mat)) m.needsUpdate = true;
   };
   img.onerror = () => {};  // no file yet: keep the drawn texture
-  img.src = `assets/scene/${name}.png`;
+  img.src = `assets/scene/${name}.webp`;
 }
 
 // ---------- materials ----------
@@ -892,7 +892,7 @@ pearl(0.55, ROW_Y[1] + 0.14, 0.38); pearl(0.82, ROW_Y[1] + 0.1, 0.46, 0.07);
   stool.rotation.y = 0.4;
   scene.add(stool);
 
-  const coverTex = new THREE.TextureLoader().load("books/lvyin/assets/pages/cover-right.png");
+  const coverTex = new THREE.TextureLoader().load("books/lvyin/assets/pages/cover-right.webp");
   coverTex.encoding = THREE.sRGBEncoding;
   const lying = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.16, 1.15),
     new THREE.MeshStandardMaterial({ map: coverTex, roughness: 0.6 }));
