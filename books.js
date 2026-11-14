@@ -46,7 +46,7 @@ export const books = [
 
 export function bookUrl(id) {
   const book = books.find((item) => item.id === id);
-  if (book?.dir) return `books/${encodeURIComponent(book.dir)}/index.html`;
+  if (book?.dir) return `books/${encodeURIComponent(book.dir)}/`;
   return `book.html?book=${encodeURIComponent(id)}`;
 }
 
