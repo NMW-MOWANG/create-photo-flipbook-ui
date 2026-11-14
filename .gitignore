@@ -11,3 +11,6 @@ assets/scene/*-source.png
 
 # NetEase Cloud Music source files
 *.ncm
+
+# Cloudflare Pages upload staging
+dist/
